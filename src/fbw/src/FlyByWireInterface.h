@@ -93,6 +93,7 @@ class FlyByWireInterface {
   ID idFlightDirectorPitch;
   ID idFlightDirectorYaw;
 
+  ID idAutopilotActiveAny;
   ID idAutopilotActive_1;
   ID idAutopilotActive_2;
 

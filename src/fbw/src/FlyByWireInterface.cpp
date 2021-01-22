@@ -55,6 +55,7 @@ bool FlyByWireInterface::connect() {
   idFlightDirectorYaw = register_named_variable("A32NX_FLIGHT_DIRECTOR_YAW");
 
   // register L variables for autopilot
+  idAutopilotActiveAny = register_named_variable("A32NX_AUTOPILOT_ACTIVE");
   idAutopilotActive_1 = register_named_variable("A32NX_AUTOPILOT_1_ACTIVE");
   idAutopilotActive_2 = register_named_variable("A32NX_AUTOPILOT_2_ACTIVE");
 
@@ -307,6 +308,8 @@ bool FlyByWireInterface::updateAutopilotStateMachine(double sampleTime) {
   }
 
   // update autopilot state -------------------------------------------------------------------------------------------
+  set_named_variable_value(idAutopilotActiveAny,
+                           autopilotStateMachineOutput.enabled_AP1 || autopilotStateMachineOutput.enabled_AP2);
   set_named_variable_value(idAutopilotActive_1, autopilotStateMachineOutput.enabled_AP1);
   set_named_variable_value(idAutopilotActive_2, autopilotStateMachineOutput.enabled_AP2);
 
