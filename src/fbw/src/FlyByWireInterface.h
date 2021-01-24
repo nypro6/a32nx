@@ -114,6 +114,9 @@ class FlyByWireInterface {
   ID idFlightPhase;
   // ID idFmgcFlightPlanAvailable;
   ID idFmgcV2;
+  ID idFmgcV_APP;
+  ID idFmgcV_LS;
+  ID idFmgcAltitudeConstraint;
   ID idFmgcThrustReductionAltitude;
   ID idFmgcThrustReductionAltitudeGoAround;
   ID idFmgcAccelerationAltitude;

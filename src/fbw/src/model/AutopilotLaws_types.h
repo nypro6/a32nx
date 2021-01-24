@@ -50,7 +50,10 @@ typedef struct {
   real_T flight_guidance_tae_deg;
   real_T flight_phase;
   real_T V2_kn;
+  real_T VAPP_kn;
+  real_T VLS_kn;
   boolean_T is_flight_plan_available;
+  real_T altitude_constraint_ft;
   real_T thrust_reduction_altitude;
   real_T thrust_reduction_altitude_go_around;
   real_T acceleration_altitude;
@@ -84,6 +87,7 @@ typedef struct {
   real_T H_c_ft;
   real_T H_dot_c_fpm;
   real_T FPA_c_deg;
+  real_T V_SRS_c_kn;
 } ap_raw_laws_input;
 
 #endif
@@ -138,7 +142,10 @@ typedef struct {
   real_T flight_guidance_tae_deg;
   real_T flight_phase;
   real_T V2_kn;
+  real_T VAPP_kn;
+  real_T VLS_kn;
   boolean_T is_flight_plan_available;
+  real_T altitude_constraint_ft;
   real_T thrust_reduction_altitude;
   real_T thrust_reduction_altitude_go_around;
   real_T acceleration_altitude;

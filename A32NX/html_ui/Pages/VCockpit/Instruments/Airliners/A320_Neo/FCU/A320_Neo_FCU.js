@@ -262,7 +262,6 @@ class A320_Neo_FCU_Heading extends A320_Neo_FCU_Component {
 
     onPush() {
         clearTimeout(this._resetSelectionTimeout);
-        this.isSelectedValueActive = false;
         this.isPreselectionModeActive = false;
         this.inSelection = false;
         SimVar.SetSimVarValue("K:A32NX.FCU_HDG_PUSH", "number", 0);

@@ -157,6 +157,7 @@ struct ClientDataAutopilotStateMachine {
   double H_c_ft;
   double H_dot_c_fpm;
   double FPA_c_deg;
+  double V_SRS_c_kn;
 };
 
 struct ClientDataAutopilotLaws {
@@ -171,7 +172,10 @@ struct ClientDataAutopilotLaws {
 struct ClientDataLocalVariables {
   double flightPhase;
   double V2;
+  double V_APP;
+  double V_LS;
   double flightPlanAvailable;
+  double altitudeConstraint;
   double thrustReductionAltitude;
   double thrustReductionAltitudeGoAround;
   double accelerationAltitude;

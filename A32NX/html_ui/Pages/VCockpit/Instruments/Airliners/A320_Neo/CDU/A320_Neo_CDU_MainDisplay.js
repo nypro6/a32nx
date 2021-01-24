@@ -1169,6 +1169,7 @@ class A320_Neo_CDU_MainDisplay extends FMCMainDisplay {
                     } else {
                         const altitude = Simplane.getAutoPilotSelectedAltitudeLockValue("feet");
                         if (isFinite(altitude)) {
+                            SimVar.SetSimVarValue("L:A32NX_AP_CSTN_ALT", "feet", 0);
                             Coherent.call("AP_ALT_VAR_SET_ENGLISH", 2, altitude, this._forceNextAltitudeUpdate);
                             this._forceNextAltitudeUpdate = false;
                             SimVar.SetSimVarValue("L:AP_CURRENT_TARGET_ALTITUDE_IS_CONSTRAINT", "number", 0);
@@ -1177,6 +1178,7 @@ class A320_Neo_CDU_MainDisplay extends FMCMainDisplay {
                 } else {
                     const altitude = Simplane.getAutoPilotSelectedAltitudeLockValue("feet");
                     if (isFinite(altitude)) {
+                        SimVar.SetSimVarValue("L:A32NX_AP_CSTN_ALT", "feet", 0);
                         Coherent.call("AP_ALT_VAR_SET_ENGLISH", 2, altitude, this._forceNextAltitudeUpdate);
                         this._forceNextAltitudeUpdate = false;
                         SimVar.SetSimVarValue("L:AP_CURRENT_TARGET_ALTITUDE_IS_CONSTRAINT", "number", 0);

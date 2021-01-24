@@ -51,7 +51,10 @@ typedef struct {
   real_T flight_guidance_tae_deg;
   real_T flight_phase;
   real_T V2_kn;
+  real_T VAPP_kn;
+  real_T VLS_kn;
   boolean_T is_flight_plan_available;
+  real_T altitude_constraint_ft;
   real_T thrust_reduction_altitude;
   real_T thrust_reduction_altitude_go_around;
   real_T acceleration_altitude;
@@ -84,6 +87,7 @@ typedef struct {
   boolean_T APPR_push;
   real_T Psi_fcu_deg;
   real_T H_fcu_ft;
+  real_T H_constraint_ft;
   real_T H_dot_fcu_fpm;
   real_T FPA_fcu_deg;
   boolean_T TRK_FPA_mode;
@@ -127,20 +131,6 @@ typedef struct {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_ap_lateral_input_
-#define DEFINED_TYPEDEF_FOR_ap_lateral_input_
-
-typedef struct {
-  boolean_T HDG_push;
-  boolean_T HDG_pull;
-  boolean_T LOC_push;
-  boolean_T APPR_push;
-  real_T Psi_fcu_deg;
-  boolean_T TRK_FPA_mode;
-} ap_lateral_input;
-
-#endif
-
 #ifndef DEFINED_TYPEDEF_FOR_ap_data_
 #define DEFINED_TYPEDEF_FOR_ap_data_
 
@@ -180,7 +170,10 @@ typedef struct {
   real_T flight_guidance_tae_deg;
   real_T flight_phase;
   real_T V2_kn;
+  real_T VAPP_kn;
+  real_T VLS_kn;
   boolean_T is_flight_plan_available;
+  real_T altitude_constraint_ft;
   real_T thrust_reduction_altitude;
   real_T thrust_reduction_altitude_go_around;
   real_T acceleration_altitude;
@@ -202,6 +195,7 @@ typedef struct {
   real_T time_since_touchdown;
   real_T time_since_lift_off;
   boolean_T H_fcu_in_selection;
+  boolean_T H_constraint_valid;
   boolean_T Psi_fcu_in_selection;
 } ap_sm_data_computed;
 
@@ -312,29 +306,10 @@ typedef enum {
 #define DEFINED_TYPEDEF_FOR_ap_lateral_
 
 typedef struct {
-  ap_lateral_input input;
   ap_lateral_armed armed;
   ap_lateral_condition condition;
   ap_lateral_output output;
 } ap_lateral;
-
-#endif
-
-#ifndef DEFINED_TYPEDEF_FOR_ap_vertical_input_
-#define DEFINED_TYPEDEF_FOR_ap_vertical_input_
-
-typedef struct {
-  boolean_T ALT_push;
-  boolean_T ALT_pull;
-  boolean_T VS_push;
-  boolean_T VS_pull;
-  boolean_T LOC_push;
-  boolean_T APPR_push;
-  real_T H_fcu_ft;
-  real_T H_dot_fcu_fpm;
-  real_T FPA_fcu_deg;
-  boolean_T TRK_FPA_mode;
-} ap_vertical_input;
 
 #endif
 
@@ -383,6 +358,7 @@ typedef struct {
   real_T H_c_ft;
   real_T H_dot_c_fpm;
   real_T FPA_c_deg;
+  real_T V_SRS_c_kn;
 } ap_vertical_output;
 
 #endif
@@ -391,7 +367,6 @@ typedef struct {
 #define DEFINED_TYPEDEF_FOR_ap_vertical_
 
 typedef struct {
-  ap_vertical_input input;
   ap_vertical_armed armed;
   ap_vertical_condition condition;
   ap_vertical_output output;
@@ -417,6 +392,7 @@ typedef struct {
   real_T H_c_ft;
   real_T H_dot_c_fpm;
   real_T FPA_c_deg;
+  real_T V_SRS_c_kn;
 } ap_raw_laws_input;
 
 #endif

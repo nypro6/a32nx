@@ -64,7 +64,11 @@ bool FlyByWireInterface::connect() {
   // register L variables for flight guidance
   idFlightPhase = register_named_variable("A32NX_FWC_FLIGHT_PHASE");
   idFmgcV2 = register_named_variable("AIRLINER_V2_SPEED");
+  idFmgcV_APP = register_named_variable("AIRLINER_VAPP_SPEED");
+  idFmgcV_LS = register_named_variable("AIRLINER_VLS_SPEED");
+
   // idFmgcFlightPlanAvailable = register_named_variable("X");
+  idFmgcAltitudeConstraint = register_named_variable("A32NX_AP_CSTN_ALT");
   idFmgcThrustReductionAltitude = register_named_variable("AIRLINER_THR_RED_ALT");
   idFmgcThrustReductionAltitudeGoAround = register_named_variable("AIRLINER_THR_RED_ALT_GOAROUND");
   idFmgcAccelerationAltitude = register_named_variable("AIRLINER_ACC_ALT");
@@ -169,7 +173,10 @@ bool FlyByWireInterface::readDataAndLocalVariables(double sampleTime) {
   // update client data for flight guidance
   ClientDataLocalVariables clientDataLocalVariables = {get_named_variable_value(idFlightPhase),
                                                        get_named_variable_value(idFmgcV2),
+                                                       get_named_variable_value(idFmgcV_APP),
+                                                       get_named_variable_value(idFmgcV_LS),
                                                        1.0,
+                                                       get_named_variable_value(idFmgcAltitudeConstraint),
                                                        get_named_variable_value(idFmgcThrustReductionAltitude),
                                                        get_named_variable_value(idFmgcThrustReductionAltitudeGoAround),
                                                        get_named_variable_value(idFmgcAccelerationAltitude),
@@ -246,7 +253,11 @@ bool FlyByWireInterface::updateAutopilotStateMachine(double sampleTime) {
         get_named_variable_value(idFlightGuidanceTrackAngleError);
     autopilotStateMachine.AutopilotStateMachine_U.in.data.flight_phase = get_named_variable_value(idFlightPhase);
     autopilotStateMachine.AutopilotStateMachine_U.in.data.V2_kn = get_named_variable_value(idFmgcV2);
+    autopilotStateMachine.AutopilotStateMachine_U.in.data.VAPP_kn = get_named_variable_value(idFmgcV_APP);
+    autopilotStateMachine.AutopilotStateMachine_U.in.data.VLS_kn = get_named_variable_value(idFmgcV_LS);
     autopilotStateMachine.AutopilotStateMachine_U.in.data.is_flight_plan_available = 1;
+    autopilotStateMachine.AutopilotStateMachine_U.in.data.altitude_constraint_ft =
+        get_named_variable_value(idFmgcAltitudeConstraint);
     autopilotStateMachine.AutopilotStateMachine_U.in.data.thrust_reduction_altitude =
         get_named_variable_value(idFmgcThrustReductionAltitude);
     autopilotStateMachine.AutopilotStateMachine_U.in.data.thrust_reduction_altitude_go_around =
@@ -305,6 +316,7 @@ bool FlyByWireInterface::updateAutopilotStateMachine(double sampleTime) {
     autopilotStateMachineOutput.H_c_ft = clientData.H_c_ft;
     autopilotStateMachineOutput.H_dot_c_fpm = clientData.H_dot_c_fpm;
     autopilotStateMachineOutput.FPA_c_deg = clientData.FPA_c_deg;
+    autopilotStateMachineOutput.V_SRS_c_kn = clientData.V_SRS_c_kn;
   }
 
   // update autopilot state -------------------------------------------------------------------------------------------
@@ -402,7 +414,10 @@ bool FlyByWireInterface::updateAutopilotLaws(double sampleTime) {
         get_named_variable_value(idFlightGuidanceTrackAngleError);
     autopilotLaws.AutopilotLaws_U.in.data.flight_phase = get_named_variable_value(idFlightPhase);
     autopilotLaws.AutopilotLaws_U.in.data.V2_kn = get_named_variable_value(idFmgcV2);
+    autopilotLaws.AutopilotLaws_U.in.data.VAPP_kn = get_named_variable_value(idFmgcV_APP);
+    autopilotLaws.AutopilotLaws_U.in.data.VLS_kn = get_named_variable_value(idFmgcV_LS);
     autopilotLaws.AutopilotLaws_U.in.data.is_flight_plan_available = 1;
+    autopilotLaws.AutopilotLaws_U.in.data.altitude_constraint_ft = get_named_variable_value(idFmgcAltitudeConstraint);
     autopilotLaws.AutopilotLaws_U.in.data.thrust_reduction_altitude =
         get_named_variable_value(idFmgcThrustReductionAltitude);
     autopilotLaws.AutopilotLaws_U.in.data.thrust_reduction_altitude_go_around =
@@ -438,7 +453,7 @@ bool FlyByWireInterface::updateAutopilotLaws(double sampleTime) {
           autopilotStateMachineOutput.mode_reversion,     autopilotStateMachineOutput.autothrust_mode,
           autopilotStateMachineOutput.Psi_c_deg,          autopilotStateMachineOutput.H_c_ft,
           autopilotStateMachineOutput.H_dot_c_fpm,        autopilotStateMachineOutput.FPA_c_deg,
-      };
+          autopilotStateMachineOutput.V_SRS_c_kn};
       simConnectInterface.setClientDataAutopilotStateMachine(clientDataStateMachine);
     }
     // read client data written by simulink

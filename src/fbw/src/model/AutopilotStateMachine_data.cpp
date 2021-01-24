@@ -45,7 +45,10 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
       0.0,
       0.0,
       0.0,
+      0.0,
+      0.0,
       0,
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -62,6 +65,7 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
       0.0,
       0.0,
       0,
+      0,
       0
     },
 
@@ -81,19 +85,11 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
       0.0,
       0.0,
       0.0,
+      0.0,
       0
     },
 
     {
-      {
-        0,
-        0,
-        0,
-        0,
-        0.0,
-        0
-      },
-
       {
         0,
         0
@@ -120,15 +116,6 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
     {
       {
         0,
-        0,
-        0,
-        0,
-        0.0,
-        0
-      },
-
-      {
-        0,
         0
       },
 
@@ -151,19 +138,6 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
     },
 
     {
-      {
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0.0,
-        0.0,
-        0.0,
-        0
-      },
-
       {
         0,
         0,
@@ -195,24 +169,12 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
         vertical_law_NONE,
         0.0,
         0.0,
+        0.0,
         0.0
       }
     },
 
     {
-      {
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0.0,
-        0.0,
-        0.0,
-        0
-      },
-
       {
         0,
         0,
@@ -244,11 +206,13 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
         vertical_law_NONE,
         0.0,
         0.0,
+        0.0,
         0.0
       }
     },
 
     {
+      0.0,
       0.0,
       0.0,
       0.0,
@@ -299,19 +263,6 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
       false,
       false,
       false,
-      false,
-      false,
-      0.0,
-      0.0,
-      0.0,
-      false
-    },
-
-    {
-      false,
-      false,
-      false,
-      false,
       false
     },
 
@@ -338,21 +289,13 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
       vertical_law_NONE,
       0.0,
       0.0,
+      0.0,
       0.0
     }
   },
 
 
   {
-    {
-      false,
-      false,
-      false,
-      false,
-      0.0,
-      false
-    },
-
     {
       false,
       false
@@ -413,8 +356,6 @@ Parameters_AutopilotStateMachine_T AutopilotStateMachineModelClass::AutopilotSta
   0.5,
 
   0.0,
-
-  0,
 
   0,
 
