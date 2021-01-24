@@ -288,6 +288,8 @@ bool FlyByWireInterface::updateAutopilotStateMachine(double sampleTime) {
     autopilotStateMachine.AutopilotStateMachine_U.in.input.LOC_push = simInputAutopilot.LOC_push;
     autopilotStateMachine.AutopilotStateMachine_U.in.input.APPR_push = simInputAutopilot.APPR_push;
     autopilotStateMachine.AutopilotStateMachine_U.in.input.H_fcu_ft = simData.ap_H_c_ft;
+    autopilotStateMachine.AutopilotStateMachine_U.in.input.H_constraint_ft =
+        get_named_variable_value(idFmgcAltitudeConstraint);
     autopilotStateMachine.AutopilotStateMachine_U.in.input.H_dot_fcu_fpm = get_named_variable_value(idFcuSelectedVs);
     autopilotStateMachine.AutopilotStateMachine_U.in.input.FPA_fcu_deg = get_named_variable_value(idFcuSelectedFpa);
     autopilotStateMachine.AutopilotStateMachine_U.in.input.Psi_fcu_deg = get_named_variable_value(idFcuSelectedHeading);
