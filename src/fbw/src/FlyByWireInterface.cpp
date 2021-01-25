@@ -626,7 +626,14 @@ bool FlyByWireInterface::updateFlyByWire(double sampleTime) {
       }
     }
   } else {
-    // autopilotLawsOutput -> client data
+    // send data to client data to be read by simulink
+    ClientDataAutopilotLaws clientDataLaws = {autopilotLawsOutput.ap_on,
+                                              autopilotLawsOutput.flight_director.Theta_c_deg,
+                                              autopilotLawsOutput.autopilot.Theta_c_deg,
+                                              autopilotLawsOutput.flight_director.Phi_c_deg,
+                                              autopilotLawsOutput.autopilot.Phi_c_deg,
+                                              autopilotLawsOutput.autopilot.Beta_c_deg};
+    simConnectInterface.setClientDataAutopilotLaws(clientDataLaws);
   }
 
   // success ----------------------------------------------------------------------------------------------------------
