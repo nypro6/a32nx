@@ -649,10 +649,10 @@ void AutopilotStateMachineModelClass::AutopilotStateMachine_DES_entry(void)
 {
   real_T tmp;
   AutopilotStateMachine_B.out.mode = vertical_mode_DES;
-  if (AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft == 0.0) {
-    tmp = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
-  } else {
+  if (AutopilotStateMachine_B.BusAssignment_g.data_computed.H_constraint_valid) {
     tmp = AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft;
+  } else {
+    tmp = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
   }
 
   if (std::abs(AutopilotStateMachine_B.BusAssignment_g.data.H_ind_ft - tmp) <= 1200.0) {
@@ -669,10 +669,10 @@ void AutopilotStateMachineModelClass::AutopilotStateMachine_CLB_entry(void)
 {
   real_T tmp;
   AutopilotStateMachine_B.out.mode = vertical_mode_CLB;
-  if (AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft == 0.0) {
-    tmp = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
-  } else {
+  if (AutopilotStateMachine_B.BusAssignment_g.data_computed.H_constraint_valid) {
     tmp = AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft;
+  } else {
+    tmp = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
   }
 
   if (std::abs(AutopilotStateMachine_B.BusAssignment_g.data.H_ind_ft - tmp) <= 1200.0) {
@@ -1059,12 +1059,12 @@ void AutopilotStateMachineModelClass::AutopilotStateMachine_ALT_CST_CPT(void)
 void AutopilotStateMachineModelClass::AutopilotStateMachine_CLB_during(void)
 {
   real_T targetAltitude;
-  if (AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft == 0.0) {
-    targetAltitude = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
-    AutopilotStateMachine_B.out.H_c_ft = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
-  } else {
+  if (AutopilotStateMachine_B.BusAssignment_g.data_computed.H_constraint_valid) {
     targetAltitude = AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft;
     AutopilotStateMachine_B.out.H_c_ft = AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft;
+  } else {
+    targetAltitude = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
+    AutopilotStateMachine_B.out.H_c_ft = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
   }
 
   if (std::abs(AutopilotStateMachine_B.BusAssignment_g.data.H_ind_ft - targetAltitude) > 1200.0) {
@@ -1160,12 +1160,12 @@ void AutopilotStateMachineModelClass::AutopilotStateMachine_CLB(void)
 void AutopilotStateMachineModelClass::AutopilotStateMachine_DES_during(void)
 {
   real_T targetAltitude;
-  if (AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft == 0.0) {
-    targetAltitude = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
-    AutopilotStateMachine_B.out.H_c_ft = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
-  } else {
+  if (AutopilotStateMachine_B.BusAssignment_g.data_computed.H_constraint_valid) {
     targetAltitude = AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft;
     AutopilotStateMachine_B.out.H_c_ft = AutopilotStateMachine_B.BusAssignment_g.input.H_constraint_ft;
+  } else {
+    targetAltitude = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
+    AutopilotStateMachine_B.out.H_c_ft = AutopilotStateMachine_B.BusAssignment_g.input.H_fcu_ft;
   }
 
   if (std::abs(AutopilotStateMachine_B.BusAssignment_g.data.H_ind_ft - targetAltitude) > 1200.0) {
