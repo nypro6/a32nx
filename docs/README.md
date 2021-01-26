@@ -137,13 +137,15 @@ DetentTakeOffGoAround = 1.00
 
 #### Not solved or missing
 
-- :x: Normal Law (Pitch) creates a too small pitch rate on low speed or g-load on higher speeds
-- :x: Rotation Law
 - :x: High speed protection
 - :x: High angle of attack (AoA) protection
 - :x: Alternative Law
 - :x: Direct Law (in flight)
 - :x: Simulation of hydraulic system missing -> when engines are off / electric pump is off control surfaces should not work
+
+#### Implemented (awaiting feedback)
+- :large_orange_diamond: Normal Law (Pitch) creates a too small pitch rate on low speed or g-load on higher speeds
+- :large_orange_diamond: Rotation Law
 
 #### Considered solved
 
