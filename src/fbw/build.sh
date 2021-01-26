@@ -73,6 +73,7 @@ clang++ \
   "${DIR}/src/model/FlyByWire.cpp" \
   "${DIR}/src/model/FlyByWire_data.cpp" \
   "${DIR}/src/model/look1_binlxpw.cpp" \
+  "${DIR}/src/model/look2_binlxpw.cpp" \
   -I "${DIR}/src/zlib" \
   "${DIR}/src/zlib/zfstream.cc" \
   "${DIR}/src/FlyByWireInterface.cpp" \
