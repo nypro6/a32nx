@@ -2233,7 +2233,7 @@ void AutopilotStateMachineModelClass::step()
   }
 
   AutopilotStateMachine_B.BusAssignment_g.vertical.condition.ALT_CPT = ((sCLB_tmp <= rtb_Saturation / 6.0) &&
-    ((rtb_GainTheta1 == rtb_GainTheta) && ((rtb_Saturation >= 300.0) && state_tmp)));
+    ((rtb_GainTheta1 == rtb_GainTheta) && ((rtb_Saturation >= 100.0) && state_tmp)));
   rtb_GainTheta1 = AutopilotStateMachine_U.in.input.H_constraint_ft - AutopilotStateMachine_U.in.data.H_ind_ft;
   sCLB_tmp = std::abs(rtb_GainTheta1);
   AutopilotStateMachine_B.BusAssignment_g.vertical.condition.ALT_CST =
