@@ -1953,7 +1953,10 @@ void AutopilotStateMachineModelClass::step()
   if (AutopilotStateMachine_DWork.DelayInput1_DSTATE_h) {
     AutopilotStateMachine_DWork.newFcuAltitudeSelected_b = 1.0;
   } else {
-    if (std::abs(AutopilotStateMachine_U.in.data.H_ind_ft - AutopilotStateMachine_U.in.input.H_fcu_ft) > 250.0) {
+    if ((std::abs(AutopilotStateMachine_U.in.data.H_ind_ft - AutopilotStateMachine_U.in.input.H_fcu_ft) > 250.0) &&
+        (((AutopilotStateMachine_U.in.input.H_fcu_ft > AutopilotStateMachine_U.in.data.H_ind_ft) &&
+          (AutopilotStateMachine_U.in.data.H_dot_ft_min >= 100.0)) || ((AutopilotStateMachine_U.in.input.H_fcu_ft <
+           AutopilotStateMachine_U.in.data.H_ind_ft) && (AutopilotStateMachine_U.in.data.H_dot_ft_min <= -100.0)))) {
       AutopilotStateMachine_DWork.newFcuAltitudeSelected_b = 1.0;
     }
   }
