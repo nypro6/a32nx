@@ -30,8 +30,9 @@ typedef struct {
   real_T eventTime_aq;
   real_T eventTime_c;
   real_T newFcuAltitudeSelected;
-  real_T newFcuAltitudeSelected_b;
   real_T accelerationAltitudeActive;
+  real_T newFcuAltitudeSelected_b;
+  real_T accelerationAltitudeActive_a;
   boolean_T DelayInput1_DSTATE;
   boolean_T DelayInput1_DSTATE_b;
   boolean_T DelayInput1_DSTATE_d;
